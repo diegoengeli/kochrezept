@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<h2>Recipes</h2>
+<div class="list-group">
+    {% for recipe in recipes %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <h5 class="mb-1">{{ recipe.title }}</h5>
+        <p class="mb-1">{{ recipe.ingredients }}</p>
+        <p class="mb-1">{{ recipe.instructions }}</p>
+        <small>Posted by {{ recipe.author.first_name }} {{ recipe.author.last_name }}</small>
+    </a>
+    {% else %}
+    <p>No recipes found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
