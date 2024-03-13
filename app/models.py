@@ -1,10 +1,11 @@
 # app/models.py
+# code used from microblog [Miguel Grinberg]
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, db, login
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120))
@@ -27,7 +28,7 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))

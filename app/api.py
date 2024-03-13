@@ -1,4 +1,5 @@
 #api.py
+# code used from microblog [Miguel Grinberg]
 from app import app
 from app.models import Recipe
 from flask import Flask, jsonify

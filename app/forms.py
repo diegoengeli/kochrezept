@@ -1,4 +1,5 @@
 # app/forms.py
+# code used from microblog [Miguel Grinberg]
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SubmitField, FileField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
@@ -7,7 +8,7 @@ from app.models import User
 import sqlalchemy as sa
 from app import db
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 class RegistrationForm(FlaskForm):
     # Registration form fields
     username = StringField('Username')
@@ -22,7 +23,7 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 class LoginForm(FlaskForm):
     # Login form fields
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -30,7 +31,7 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 class EditProfileForm(FlaskForm):
     # Profile editing form fields
     username = StringField('Username')
@@ -56,7 +57,7 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('This E-Mail is already in use, please use a different E-Mail.')
             
-
+# code by marcel based on microblog [Miguel Grinberg]
 class RecipeForm(FlaskForm):
     # Recipe Form fields
     title = StringField('Title', validators=[DataRequired(), Length(min=1, max=140)])

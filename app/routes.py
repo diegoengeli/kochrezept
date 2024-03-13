@@ -1,4 +1,5 @@
 # app/routes.py
+# code used from microblog [Miguel Grinberg]
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
@@ -6,6 +7,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, RecipeForm, 
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe
 from werkzeug.urls import url_parse
+
 
 @app.before_request
 def before_request():
@@ -21,7 +23,7 @@ def index():
     recipes = Recipe.query.all()
     return render_template('index.html', title='Home', recipes=recipes)
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -45,7 +47,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -60,7 +62,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
+# code used from microblog [Miguel Grinberg]
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -90,7 +92,7 @@ def edit_profile():
         form.email.data = current_user.email
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
-
+# code by marcel based on microblog [Miguel Grinberg]
 @app.route('/post_recipe', methods=['GET', 'POST'])
 @login_required
 def post_recipe():

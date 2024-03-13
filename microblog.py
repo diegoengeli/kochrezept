@@ -1,4 +1,5 @@
 #microblog.py
+#code used from microblog [Miguel Grinberg]
 from app import app, db
 from app.models import User, Recipe
 
